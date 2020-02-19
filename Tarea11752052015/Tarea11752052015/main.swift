@@ -10,17 +10,14 @@ import Foundation
 
 // Inicializacion de Variables
 var unidad: Int = 0
-var longitudArreglo: Int = 0
 var comision: Double = 0.0
 var valorUnitario: Double = 0.0
 var contadorItems: Int = 0
 var cantidadDatos: Int = 0
 var inputUnidades: String
-var inputValorUnitario: String
 var calculoExtra: String
 var keepPlaying = true
 var continueGuessing = true
-
 
 // Inicializacion de arreglos
 var arregloComisiones: Array<String> = Array <String>()
@@ -61,13 +58,9 @@ while keepPlaying
                 valorUnitario = 1.25
                 contadorItems+=1
                 comision = (Double(unidad)*valorUnitario)
-            case 800 ... 1000:
-                contadorItems+=1
-                valorUnitario = 1.75
-                comision = (Double(unidad)*valorUnitario)
             default:
                 contadorItems+=1
-                valorUnitario = 2.05
+                valorUnitario = 1.75
                 comision = (Double(unidad)*valorUnitario)
         }
         arregloComisiones.append(String(contadorItems))
@@ -93,12 +86,12 @@ while keepPlaying
             print("========================================================")
             print("\(arregloEncabezados[0]) || \(arregloEncabezados[1]) || \(arregloEncabezados[2]) || \(arregloEncabezados[3])")
             print("=====||==========||================||===================")
-            let indiceContador : Int = (cantidadDatos/4)
-            for i in 1...cantidadDatos
+            var indiceContador : Int = cantidadDatos/4
+            for i in 1...indiceContador
             {
-                print("\(i)")
                 print("\(arregloComisiones[(i*4)])          \(arregloComisiones[(i*4)+1])           $\(arregloComisiones[(i*4)+2])              $\(arregloComisiones[(i*4)+3])")
                 print("=====||==========||================||===================")
+
             }
             continueGuessing = false
         }
