@@ -91,11 +91,12 @@ while keepPlaying
         if(calculoExtra == "N" || calculoExtra == "n")
         {
             print("========================================================")
-            print("\(arregloEncabezados[0]) || \(arregloEncabezados[1]) || \(arregloEncabezados[2]) || \(arregloEncabezados[2])")
+            print("\(arregloEncabezados[0]) || \(arregloEncabezados[1]) || \(arregloEncabezados[2]) || \(arregloEncabezados[3])")
             print("=====||==========||================||===================")
             let indiceContador : Int = (cantidadDatos/4)
-            for i in 1...indiceContador
+            for i in 1...cantidadDatos
             {
+                print("\(i)")
                 print("\(arregloComisiones[(i*4)])          \(arregloComisiones[(i*4)+1])           $\(arregloComisiones[(i*4)+2])              $\(arregloComisiones[(i*4)+3])")
                 print("=====||==========||================||===================")
             }
