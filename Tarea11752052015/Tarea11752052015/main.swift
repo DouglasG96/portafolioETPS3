@@ -29,32 +29,25 @@ while keepPlaying
     while continueGuessing
     {
         print("Ingrese numero de unidades: ")
-        do{
-            inputUnidades = NSString(data: FileHandle.standardInput.availableData, encoding:String.Encoding.utf8.rawValue)! as String
-            inputUnidades = inputUnidades.replacingOccurrences(of: "\n",with: "", options: NSString.CompareOptions.literal,range: nil)
-            unidad = Int(inputUnidades)!
-        }
-        catch
-        {
-            print(error.localizedDescription)
-            //print("Ocurrio un error al tratar de ingresar las unidades")
-        }
-        
+
+        inputUnidades = NSString(data: FileHandle.standardInput.availableData, encoding:String.Encoding.utf8.rawValue)! as String
+        inputUnidades = inputUnidades.replacingOccurrences(of: "\n",with: "", options: NSString.CompareOptions.literal,range: nil)
+        unidad = Int(inputUnidades)!
         switch unidad
         {
             case 0 ... 200:
                 contadorItems+=1
                 valorUnitario = 0.25
                 comision = (Double(unidad)*valorUnitario)
-            case 200 ... 400:
+            case 201 ... 400:
                 contadorItems+=1
                 valorUnitario = 0.75
                 comision = (Double(unidad)*valorUnitario)
-            case 400 ... 600:
+            case 401 ... 600:
                 contadorItems+=1
                 valorUnitario = 1.05
                 comision = (Double(unidad)*valorUnitario)
-            case 600 ... 800:
+            case 601 ... 800:
                 valorUnitario = 1.25
                 contadorItems+=1
                 comision = (Double(unidad)*valorUnitario)
@@ -69,36 +62,30 @@ while keepPlaying
         arregloComisiones.append(String(comision))
         print("Se ha almacenado el item numero \(contadorItems)")
         print ("Desea realizar un calculo mas? Y/N" )
-        do
-        {
-            calculoExtra = NSString(data: FileHandle.standardInput.availableData, encoding:String.Encoding.utf8.rawValue)! as String
-            calculoExtra = calculoExtra.replacingOccurrences(of: "\n",with: "", options: NSString.CompareOptions.literal,range: nil)
-        }
-        catch
-        {
-            print(error.localizedDescription)
-        }
+
+        calculoExtra = NSString(data: FileHandle.standardInput.availableData, encoding:String.Encoding.utf8.rawValue)! as String
+        calculoExtra = calculoExtra.replacingOccurrences(of: "\n",with: "", options: NSString.CompareOptions.literal,range: nil)
         
         cantidadDatos = arregloComisiones.count
         
         if(calculoExtra == "N" || calculoExtra == "n")
         {
-            print("========================================================")
-            print("\(arregloEncabezados[0]) || \(arregloEncabezados[1]) || \(arregloEncabezados[2]) || \(arregloEncabezados[3])")
-            print("=====||==========||================||===================")
-            var indiceContador : Int = cantidadDatos/4
-            for i in 1...indiceContador
-            {
-                print("\(arregloComisiones[(i*4)])          \(arregloComisiones[(i*4)+1])           $\(arregloComisiones[(i*4)+2])              $\(arregloComisiones[(i*4)+3])")
-                print("=====||==========||================||===================")
+          print("========= TABLA DE CALCULO DE COMISIONES ===============")
+          print("========================================================")
+          print("\(arregloEncabezados[0]) || \(arregloEncabezados[1]) || \(arregloEncabezados[2]) || \(arregloEncabezados[3])")
+          print("=====||==========||================||===================")
+          var indiceContador : Int = ((cantidadDatos/4) - 1) 
+          for i in 0...indiceContador
+          {
+              print("\(arregloComisiones[(i*4)])          \(arregloComisiones[(i*4)+1])           $\(arregloComisiones[(i*4)+2])              $\(arregloComisiones[(i*4)+3])")
+              print("=====||==========||================||===================")
 
-            }
-            continueGuessing = false
+          }
+          continueGuessing = false
         }
-        else
+        else if(calculoExtra == "Y" || calculoExtra == "y")
         {
+          continueGuessing = true
         }
     }
 }
-
-
